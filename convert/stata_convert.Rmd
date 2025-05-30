@@ -48,3 +48,18 @@ if (length(stata_files) > 0) {
 
 ```
 
+#in case you have a specific file you need to convert to csv:
+
+# Load the haven package
+library(haven)
+
+# Specify the files
+stata_file <- "statafile.dta"
+data <- read_dta(stata_file)
+csv_file <- sub("\\.dta$", ".csv", stata_file)
+
+# Write to CSV
+write.csv(data, file = csv_file, row.names = FALSE)
+
+cat("Stata file has been successfully converted to CSV:", csv_file, "\n")
+
